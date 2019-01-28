@@ -16,3 +16,8 @@
 // });
 
 Route::get('/', 'HomeController@index');
+Route::get('data', 'HomeController@data');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

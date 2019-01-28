@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- CSS Files -->
   <link href="{{ asset('/css/material-dashboard.css') }}" rel="stylesheet" />
+  <link  href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="{{ asset('/demo/demo.css') }}" rel="stylesheet" />
 </head>
@@ -190,7 +191,7 @@
       </footer>
     </div>
   </div>
-  <div class="fixed-plugin">
+  <!-- <div class="fixed-plugin">
     <div class="dropdown show-dropdown">
       <a href="#" data-toggle="dropdown">
         <i class="fa fa-cog fa-2x"> </i>
@@ -233,7 +234,7 @@
         </li>
       </ul>
     </div>
-  </div>
+  </div> -->
   <!--   Core JS Files   -->
   <script src="{{ asset('/js/core/jquery.min.js') }}"></script>
   <script src="{{ asset('/js/core/popper.min.js') }}"></script>
@@ -277,7 +278,21 @@
   <script src="{{ asset('/js/material-dashboard.js') }}" type="text/javascript"></script>
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="{{ asset('/demo/demo.js') }}"></script>
+  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
   <script>
+    $(function() {
+      $('#table').DataTable({
+       processing: true,
+       serverSide: true,
+       ajax: '{{ url('data') }}',
+       columns: [
+         { data: 'id', name: 'id' },
+         { data: 'name', name: 'name' },
+         { data: 'email', name: 'email' }
+       ]
+     });
+   });
+
     $(document).ready(function() {
       $().ready(function() {
         $sidebar = $('.sidebar');
